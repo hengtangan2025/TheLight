@@ -1,0 +1,5 @@
+<!--pages/shareImage/shareImage.wxml-->
+<canvas canvas-id="shareCanvas" style="width: {{width}}px;height: {{height}}px">
+</canvas>
+<button bindtap='dawnload'>下载</button>
+<button open-type='share'>分享</button>

@@ -1,0 +1,17 @@
+<!--pages/getInfo/getInfo.wxml-->
+<!-- <view>输入姓名 <input placeholder="这是一个可以自动聚焦的input" bindblur="getName"/></view>
+<button bindtap="chooseImage">从相册上传</button>
+<view wx:if="{{imgUrl}}">
+  <image src="{{imgUrl}}" mode='aspectFill'></image>
+</view>
+<button bindtap="submit">完成</button> -->
+
+
+<view class="body">
+  <text class='title'>手写板（请在下方区域手写内容）</text>
+  <canvas style="width: {{canvasw}}px; height: {{canvash}}px" class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback"></canvas>
+  <view class='btns'>
+    <button bindtap="cleardraw">清除</button>
+    <button bindtap="setSign">确定</button>
+  </view>
+</view>

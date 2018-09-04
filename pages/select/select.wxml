@@ -1,0 +1,5 @@
+<!--pages/selet/select.wxml-->
+<view class="body" style="width: {{width}}px;height: {{height}}px">
+  <image src="/images/seletImage.jpg" style="width: {{width}}px;height: {{height}}px"></image>
+</view>
+<view class="usermotto" bindtap="bindViewTap">选择图片</view>

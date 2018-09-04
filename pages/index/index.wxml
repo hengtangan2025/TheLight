@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="body" style="width: {{width}}px;height: {{height}}px">
+  <image src="/images/indexBg.jpg" style="width: {{width}}px;height: {{height}}px"></image>
+</view>
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+</view>
+<view class="usermotto">
+  <button bindtap="bindViewTap">发起代言</button>
+</view>
