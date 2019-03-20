@@ -90,7 +90,9 @@ Page({
       src: _this.data.imageSrc,
       success: function success(res) {
         IMG_REAL_W = res.width
+        console.log(IMG_REAL_W)
         IMG_REAL_H = res.height
+        console.log(IMG_REAL_H)
         IMG_RATIO = IMG_REAL_W / IMG_REAL_H
         let minRange = IMG_REAL_W > IMG_REAL_H ? IMG_REAL_W : IMG_REAL_H
         INIT_DRAG_POSITION = minRange > INIT_DRAG_POSITION ? INIT_DRAG_POSITION : minRange
@@ -180,19 +182,29 @@ Page({
     wx.showLoading({
       title: '图片裁剪中...',
     })
+    console.log(IMG_REAL_W)
+    console.log(IMG_REAL_H)
     // 将图片写入画布
     const ctx = wx.createCanvasContext('myCanvas')
-    ctx.drawImage(_this.data.imageSrc, 0, 0, IMG_REAL_W, IMG_REAL_H);
+    if (IMG_RATIO >= 1) {
+      var canvasImageW = 750
+      var canvasImageH = 750 / IMG_RATIO
+    } else {
+      var canvasImageW = 750
+      var canvasImageH = 750 / IMG_RATIO
+    }
+    ctx.drawImage(_this.data.imageSrc, 0, 0, canvasImageW, canvasImageH);
     ctx.draw(true, () => {
-      // 获取画布要裁剪的位置和宽度   均为百分比 * 画布中图片的宽度    保证了在微信小程序中裁剪的图片模糊  位置不对的问题 canvasT = (_this.data.cutT / _this.data.cropperH) * (_this.data.imageH / pixelRatio)
-      var canvasW = ((_this.data.cropperW - _this.data.cutL - _this.data.cutR) / _this.data.cropperW) * IMG_REAL_W
-      var canvasH = ((_this.data.cropperH - _this.data.cutT - _this.data.cutB) / _this.data.cropperH) * IMG_REAL_H
-      var canvasL = (_this.data.cutL / _this.data.cropperW) * IMG_REAL_W
-      var canvasT = (_this.data.cutT / _this.data.cropperH) * IMG_REAL_H
-      console.log(canvasL)
-      console.log(canvasT)
+      // 获取画布要裁剪的位置和宽度   均为百分比 * 画布中图片的宽度    保证了在微信小程序中裁剪的图片模糊  位置不对的问题 
+      // var canvasT = (_this.data.cutT / _this.data.cropperH) * (_this.data.imageH / PR)
+      var canvasW = ((_this.data.cropperW - _this.data.cutL - _this.data.cutR) / _this.data.cropperW) * canvasImageW
       console.log(canvasW)
+      var canvasH = ((_this.data.cropperH - _this.data.cutT - _this.data.cutB) / _this.data.cropperH) * canvasImageH
       console.log(canvasH)
+      var canvasL = (_this.data.cutL / _this.data.cropperW) * canvasImageW
+      console.log(canvasL)
+      var canvasT = (_this.data.cutT / _this.data.cropperH) * canvasImageH
+      console.log(canvasT)
       wx.canvasToTempFilePath({
         x: canvasL,
         y: canvasT,
@@ -200,7 +212,7 @@ Page({
         height: canvasH,
         destWidth: canvasW,
         destHeight: canvasH,
-        quality: 0.5,
+        quality: 1,
         canvasId: 'myCanvas',
         success: function (res) {
           wx.hideLoading()
@@ -209,6 +221,15 @@ Page({
           //   current: '', // 当前显示图片的http链接
           //   urls: [res.tempFilePath] // 需要预览的图片http链接列表
           // })
+
+          // wx.getImageInfo({
+          //   src: res.tempFilePath,
+          //   success: function success(res) {
+          //     console.log(res.width)
+          //     console.log(res.height)
+          //   }
+          // })
+
           getApp().globalData.getImage = res.tempFilePath
           wx.navigateTo({
             // url: '/pages/getInfo/getInfo'

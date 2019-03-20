@@ -5,6 +5,4 @@
 <view class="userinfo">
   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
 </view>
-<view class="usermotto">
-  <button bindtap="bindViewTap">发起代言</button>
-</view>
+<view class="usermotto" bindtap="bindViewTap">发起代言</view>

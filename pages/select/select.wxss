@@ -1,13 +1,13 @@
 /* pages/selet/select.wxss */
 .usermotto {
-  height: 60rpx;
-  width: 220rpx;
+  height: 80rpx;
+  width: 300rpx;
   position: absolute;
-  bottom: 20rpx;
-  right: 40rpx;
-  color: #279686;
+  bottom: 25rpx;
+  left: 225rpx;
+  color: #333;
   background-color: #FFF;
   text-align: center;
-  border-radius: 5rpx;
-  line-height: 60rpx;
+  border-radius: 10rpx;
+  line-height: 80rpx;
 }

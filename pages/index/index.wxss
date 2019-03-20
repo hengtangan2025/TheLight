@@ -10,13 +10,13 @@ page {
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 130rpx;
+  height: 130rpx;
   margin: 20rpx;
   border-radius: 50%;
   position: absolute;
   top: 350rpx;
-  left: 180rpx;
+  left: 285rpx;
 }
 
 .userinfo-nickname {
@@ -24,19 +24,15 @@ page {
 }
 
 .usermotto {
-  height: 60rpx;
-  width: 220rpx;
+  height: 80rpx;
+  width: 300rpx;
   position: absolute;
-  top: 650rpx;
-  left: 160rpx;
-  color: #279686;
-  background-color: #FFF;
+  top: 710rpx;
+  left: 225rpx;
+  color: #333;
+  background-color: #fff;
   text-align: center;
   border-radius: 10rpx;
-  line-height: 60rpx;
+  line-height: 80rpx;
+  font-size: 40rpx;
 }
-
-button{
-  color: #279686;
-}
-
